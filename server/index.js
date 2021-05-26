@@ -10,10 +10,12 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-// Routes
+// regist routes
 const posts = require('./routes/api/posts');
+const projectlist = require('./routes/api/projectlist');
 
 app.use('/api/posts', posts);
+app.use('/api/projectlist', projectlist);
 
 const port = process.env.PORT || 5000;
 
