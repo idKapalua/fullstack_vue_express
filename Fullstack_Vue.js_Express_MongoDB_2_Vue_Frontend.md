@@ -31,8 +31,39 @@
 
 * Create PostService.js
   * Handle all of HTTP request
+  ```js
+  // Updated by biji@lginnotek.com
+  // file : ./client/src/PostService.js 
+  import axios from 'axios';
+
+  const url = "api/posts/";
+
+  class PostService {
+    //get post
+    static async getPosts() {
+      return axios.get(url).then( res => res.data)
+    }
+
+    //create post
+    static insertPost(text) {
+      return axios.post(url, {
+        text
+      });
+    }
+
+    //delete post
+    static deletePost(id) {
+      return axios.delete(`${url}${id}`)
+    }
+
+  }
+
+  export default PostService;
+
+  ```
 
   ```js
+  // original code from lecture
   // file : ./client/src/PostService.js
   import axios from 'axios';
 
@@ -40,7 +71,7 @@
 
   class PostService {
     //get post
-    static getPost() {
+    static getPosts() {
       return new Promise( async(resolve, reject) => {
         try {
           const res = await axios.get(url);
